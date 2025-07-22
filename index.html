@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz ITIL / ISO 20000</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Música de fondo -->
+  <audio id="bg-music" loop>
+    <source src="sounds/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Menú principal -->
+  <div id="start-screen" class="screen">
+    <h1>🎓 Quiz ITIL / ISO 20000</h1>
+    <p>Selecciona un modo de juego:</p>
+    <div class="menu-buttons">
+      <button id="start-practice" class="btn big">Modo Práctica</button>
+      <button id="start-survival" class="btn big">Modo Survival</button>
+    </div>
+    <button id="toggle-music" class="btn small">🎵 Música: ON</button>
+  </div>
+
+  <!-- Contenedor del quiz -->
+  <div id="quiz-container" class="screen hidden">
+    <header>
+      <h2>Quiz ITIL / ISO 20000</h2>
+      <button id="menu-btn" class="btn small">🏠 Menú</button>
+    </header>
+    
+    <div class="stats">
+      <span>Puntaje: <span id="score">0</span></span>
+      <span>Récord: <span id="max-score">0</span></span>
+      <span id="lives-container">Vidas: <span id="lives">3</span></span>
+      <span>Racha: <span id="streak">0</span></span>
+    </div>
+
+    <div class="progress-bar-container">
+      <div id="progress-bar"></div>
+    </div>
+
+    <div class="quiz">
+      <h3 id="question">Pregunta...</h3>
+      <div id="answer-buttons" class="btn-grid"></div>
+      <p id="feedback"></p>
+      <p id="explanation"></p>
+    </div>
+
+    <div class="actions">
+      <button id="next-btn" class="btn hidden">Siguiente</button>
+      <button id="restart-btn" class="btn hidden">Reiniciar</button>
+    </div>
+  </div>
+
+  <!-- Pantalla Game Over -->
+  <div id="game-over" class="screen hidden">
+    <h1 class="game-over-text">💀 ¡GAME OVER! 💀</h1>
+    <p>¿Quieres volver a intentarlo?</p>
+    <button id="retry-btn" class="btn big">Reintentar</button>
+    <button id="back-menu-btn" class="btn big">Volver al Menú</button>
+  </div>
+
+  <canvas id="confetti-canvas"></canvas>
+  <script src="script.js"></script>
+</body>
+</html>

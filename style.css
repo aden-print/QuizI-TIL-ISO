@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.screen {
+  padding: 30px;
+  width: 90%;
+  max-width: 700px;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.progress-bar-container {
+  height: 10px;
+  background: #333;
+  border-radius: 5px;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00ff7f, #00ffa6);
+  transition: width 0.3s ease;
+}
+
+.quiz h3 {
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+/* BOTONES */
+.btn {
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 12px;
+  margin: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+  font-size: 1rem;
+}
+
+.btn.big {
+  width: 90%;
+  font-size: 1.1rem;
+}
+
+.btn.small {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #5a67d8, #6b46c1);
+}
+
+.btn-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ESTILOS DE RESPUESTAS */
+.correct {
+  background: #4CAF50 !important; /* Verde */
+  color: white !important;
+}
+
+.incorrect {
+  background: #f44336 !important; /* Rojo */
+  color: white !important;
+}
+
+#feedback {
+  font-weight: bold;
+  margin-top: 12px;
+  font-size: 1rem;
+}
+
+.game-over-text {
+  font-size: 2rem;
+  color: #ff4e50;
+  animation: shake 0.5s infinite alternate;
+}
+
+@keyframes shake {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+@media (max-width: 600px) {
+  .screen {
+    padding: 20px;
+  }
+  .btn-grid {
+    grid-template-columns: 1fr;
+  }
+}
