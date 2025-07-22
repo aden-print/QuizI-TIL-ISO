@@ -522,6 +522,12 @@ function selectAnswer(answer, button) {
         return gameOver();
       }
     }
+    // Rastreo de evento en Vercel Analytics
+window.va && window.va.track('PreguntaRespondida', { 
+  pregunta: currentQuestion.question, 
+  correcta: answer.correct 
+});
+
   }
 
   // Mostrar explicación
