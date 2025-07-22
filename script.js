@@ -586,4 +586,41 @@ backMenuBtn.addEventListener("click", () => {
 menuBtn.addEventListener("click", () => {
   quizContainer.classList.add("hidden");
   startScreen.classList.remove("hidden");
-});
+});// ==================== BUSCADOR MEJORADO ====================
+const searchInput = document.getElementById("search-input");
+const searchResult = document.getElementById("search-result");
+
+searchInput.addEventListener("input", searchQuestionsRealtime);
+
+// Función para normalizar texto (eliminar tildes y pasar a minúsculas)
+function normalizeText(text) {
+  return text
+    .toLowerCase()
+    .normalize("NFD") // separa letras de tildes
+    .replace(/[\u0300-\u036f]/g, ""); // elimina tildes
+}
+
+function searchQuestionsRealtime() {
+  const query = normalizeText(searchInput.value);
+  searchResult.innerHTML = "";
+
+  if (!query) return;
+
+  const found = questions.filter(q => normalizeText(q.question).includes(query));
+
+  if (found.length > 0) {
+    found.forEach(q => {
+      const correctAnswer = q.answers.find(a => a.correct).text;
+      const div = document.createElement("div");
+      div.classList.add("search-item");
+      div.innerHTML = `
+        <p><strong>Pregunta:</strong> ${q.question}</p>
+        <p><strong>Respuesta correcta:</strong> <span style="color: #28a745;">${correctAnswer}</span></p>
+        <p><em>${q.explanation}</em></p>
+      `;
+      searchResult.appendChild(div);
+    });
+  } else {
+    searchResult.innerHTML = "<p>No se encontró ninguna pregunta con esa palabra clave.</p>";
+  }
+}
