@@ -624,3 +624,32 @@ function searchQuestionsRealtime() {
     searchResult.innerHTML = "<p>No se encontró ninguna pregunta con esa palabra clave.</p>";
   }
 }
+// ==================== MOSTRAR TODAS LAS PREGUNTAS ====================
+const showAllBtn = document.getElementById("show-all-btn");
+const allQuestionsDiv = document.getElementById("all-questions");
+
+showAllBtn.addEventListener("click", () => {
+  if (allQuestionsDiv.classList.contains("hidden")) {
+    renderAllQuestions();
+    allQuestionsDiv.classList.remove("hidden");
+    showAllBtn.textContent = "❌ Ocultar preguntas";
+  } else {
+    allQuestionsDiv.classList.add("hidden");
+    showAllBtn.textContent = "📚 Ver todas las preguntas";
+  }
+});
+
+function renderAllQuestions() {
+  allQuestionsDiv.innerHTML = "";
+  questions.forEach((q, index) => {
+    const correctAnswer = q.answers.find(a => a.correct).text;
+    const questionDiv = document.createElement("div");
+    questionDiv.classList.add("question-item");
+    questionDiv.innerHTML = `
+      <h4>${index + 1}. ${q.question}</h4>
+      <p><strong>Respuesta correcta:</strong> <span style="color: #28a745;">${correctAnswer}</span></p>
+      <p><em>${q.explanation}</em></p>
+    `;
+    allQuestionsDiv.appendChild(questionDiv);
+  });
+}
