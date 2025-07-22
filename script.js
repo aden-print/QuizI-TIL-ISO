@@ -640,16 +640,35 @@ showAllBtn.addEventListener("click", () => {
 });
 
 function renderAllQuestions() {
-  allQuestionsDiv.innerHTML = "";
+  allQuestionsDiv.innerHTML = ""; // Limpia el contenido previo
+
   questions.forEach((q, index) => {
-    const correctAnswer = q.answers.find(a => a.correct).text;
-    const questionDiv = document.createElement("div");
-    questionDiv.classList.add("question-item");
-    questionDiv.innerHTML = `
-      <h4>${index + 1}. ${q.question}</h4>
-      <p><strong>Respuesta correcta:</strong> <span style="color: #28a745;">${correctAnswer}</span></p>
-      <p><em>${q.explanation}</em></p>
-    `;
-    allQuestionsDiv.appendChild(questionDiv);
+    const questionBlock = document.createElement("div");
+    questionBlock.classList.add("question-block");
+
+    // Pregunta
+    const questionText = document.createElement("h4");
+    questionText.innerText = `${index + 1}. ${q.question}`;
+    questionBlock.appendChild(questionText);
+
+    // Lista de respuestas
+    const answerList = document.createElement("ul");
+    q.answers.forEach(ans => {
+      const li = document.createElement("li");
+      li.innerText = ans.text;
+      li.classList.add(ans.correct ? "answer-correct" : "answer-wrong");
+      answerList.appendChild(li);
+    });
+
+    // Explicación
+    if (q.explanation) {
+      const explanationText = document.createElement("p");
+      explanationText.classList.add("answer-explanation");
+      explanationText.innerText = `Explicación: ${q.explanation}`;
+      questionBlock.appendChild(explanationText);
+    }
+
+    questionBlock.appendChild(answerList);
+    allQuestionsDiv.appendChild(questionBlock);
   });
 }

@@ -180,13 +180,32 @@ header {
 }
 
 #all-questions {
-  max-height: 300px;
+  max-height: 80vh;
   overflow-y: auto;
-  background: rgba(0,0,0,0.6);
-  padding: 10px;
+  text-align: left;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 8px;
   margin-top: 10px;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #6b46c1 rgba(0,0,0,0.4);
 }
+
+/* Scrollbar personalizado (Chrome, Edge, etc.) */
+#all-questions::-webkit-scrollbar {
+  width: 8px;
+}
+
+#all-questions::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+
+#all-questions::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ffa6, #00ff7f);
+  border-radius: 10px;
+}
+
 
 .question-item {
   border-bottom: 1px solid rgba(255,255,255,0.2);
@@ -196,27 +215,44 @@ header {
 .question-item:last-child {
   border-bottom: none;
 }
-/* ===== Scrollbar personalizado ===== */
-#all-questions {
-  scrollbar-width: thin;
-  scrollbar-color: #667eea #1e1e1e;
+
+.question-block {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.6);
 }
 
-/* Para navegadores basados en WebKit (Chrome, Edge, Safari) */
-#all-questions::-webkit-scrollbar {
-  width: 8px;
+.question-block h4 {
+  margin-bottom: 8px;
+  color: #fff;
 }
 
-#all-questions::-webkit-scrollbar-track {
-  background: #1e1e1e;
-  border-radius: 4px;
+.question-block ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-#all-questions::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #667eea, #764ba2);
-  border-radius: 4px;
+.question-block li {
+  padding: 6px 10px;
+  margin-bottom: 5px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
 }
 
-#all-questions::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #5a67d8, #6b46c1);
+.answer-correct {
+  background: #28a745 !important; /* Verde */
+  color: #fff;
+}
+
+.answer-wrong {
+  background: #f44336 !important; /* Rojo */
+  color: #fff;
+}
+
+.answer-explanation {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #ddd;
 }
